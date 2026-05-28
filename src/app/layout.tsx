@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { normalizeSiteUrl } from "@/lib/siteUrl";
 
 export const viewport: Viewport = {
   themeColor: "#050B16",
@@ -11,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 const siteName = "CHA Associates PC";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chaassociatespc.com";
+const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { normalizeSiteUrl } from "@/lib/siteUrl";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chaassociatespc.com";
+const base = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 const routes = [
   "/",
