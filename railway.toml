@@ -1,0 +1,10 @@
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
+
+[service]
+internalPort = 3000
