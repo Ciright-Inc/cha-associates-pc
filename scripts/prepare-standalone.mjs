@@ -6,7 +6,8 @@ const standaloneDir = path.join(root, ".next", "standalone");
 const publicDir = path.join(root, "public");
 const nextStaticDir = path.join(root, ".next", "static");
 const standalonePublicDir = path.join(standaloneDir, "public");
-const standaloneNextStaticDir = path.join(standaloneDir, ".next", "static");
+const standaloneNextDir = path.join(standaloneDir, ".next");
+const standaloneNextStaticDir = path.join(standaloneNextDir, "static");
 
 async function exists(p) {
   try {
@@ -22,11 +23,14 @@ async function main() {
     throw new Error("Missing .next/standalone. Did you run `next build` with output:'standalone'?");
   }
 
-  // Ensure fresh copies (avoids stale assets between builds).
+  // Ensure fresh copies of *assets* (avoid stale files between builds).
+  // Do NOT delete `.next/standalone/.next` entirely, as it can contain build metadata
+  // required by the standalone server at runtime (e.g., BUILD_ID / manifests).
   await rm(standalonePublicDir, { recursive: true, force: true });
-  await rm(path.join(standaloneDir, ".next"), { recursive: true, force: true });
+  await rm(standaloneNextStaticDir, { recursive: true, force: true });
 
   await mkdir(standalonePublicDir, { recursive: true });
+  await mkdir(standaloneNextDir, { recursive: true });
   await mkdir(standaloneNextStaticDir, { recursive: true });
 
   if (await exists(publicDir)) {
