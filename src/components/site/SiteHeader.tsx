@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { cn } from "@/lib/cn";
+import { BrandMark } from "@/components/site/BrandMark";
 import { ButtonLink } from "@/components/ui/Button";
 
 const nav = [
@@ -66,9 +67,7 @@ export function SiteHeader() {
       {/* Top bar: brand + CTAs */}
       <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="group inline-flex min-w-0 items-center gap-3">
-          <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#071027] ring-1 ring-white/10">
-            <span className="h-2.5 w-2.5 rounded-full bg-gold-500" />
-          </span>
+          <BrandMark size={40} />
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-sm font-semibold tracking-wide text-paper">
               CHA Associates PC

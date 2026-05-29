@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandMark } from "@/components/site/BrandMark";
 import { ButtonLink } from "@/components/ui/Button";
 
 const groups = [
@@ -78,10 +79,7 @@ export function SiteFooter() {
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.05fr_1.95fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 shadow-ring">
-                <span className="h-2.5 w-2.5 rounded-full bg-gold-500" />
-                <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/10" />
-              </span>
+              <BrandMark size={40} />
               <div>
                 <div className="text-sm font-semibold tracking-wide text-paper">CHA Associates PC</div>
                 <div className="text-xs text-white/60">Professional Financial Advisory for the AI Era</div>
